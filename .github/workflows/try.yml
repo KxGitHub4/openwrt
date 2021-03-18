@@ -79,8 +79,12 @@ jobs:
       run: |
         cd openwrt/package/lean/
         git clone https://github.com/OpenWrt-Actions/helloworld.git
-        cd -
-        ./scripts/feeds update -a && ./scripts/feeds install -a
+        
+    - name: Update feeds
+      run: cd openwrt && ./scripts/feeds update -a 
+
+    - name: Install feeds
+      run: cd openwrt && ./scripts/feeds install -a
 
     - name: Load custom configuration
       run: |
